@@ -1,0 +1,59 @@
+body {
+    background-image: url('images/bg0.jpg');
+    margin: 0px;
+    color: white;
+}
+
+#holder {
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+#header {
+    background-image: url('images/header.png');
+    background-size: cover;
+    z-index: 1;
+    padding: 30px;
+    font-size: 200%;
+    text-shadow:
+        rgba(0, 0, 0, 0.3) -1px 0,
+        rgba(0, 0, 0, 0.1) 0 -1px,
+        rgba(255, 255, 255, 0.3) 0 1px,
+        rgba(0, 0, 0, 0.1) -1px -2px;
+}
+
+.content {
+    background-color: darkslategrey;
+    padding: 30px;
+    border-radius: 0px 4% 7% 3%;
+    text-align: center;
+    margin-top: -35px;
+    z-index: 3;
+}
+
+h1 {
+    text-decoration: underline;
+    font-variant: small-caps;
+}
+
+p {
+    color: rgb(202, 202, 202);
+    font-size: 20px;
+    font-family: times new roman;
+    text-shadow:
+        rgba(0, 0, 0, 0.3) -1px 0,
+        rgba(0, 0, 0, 0.1) 0 -1px,
+        rgba(255, 255, 255, 0.3) 0 1px,
+        rgba(0, 0, 0, 0.1) -1px -2px;
+    font-style: italic;
+}
+
+p::first-letter {
+    font-size: 200%;
+}
+
+.fancy {
+    font-family: 'Tangerine', cursive;
+    font-size: 3em;
+}

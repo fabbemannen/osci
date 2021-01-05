@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--Tänkte använda en ikon, men blev inte av-->
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <meta name="viewport" http-equiv="Content-Type"
+        content="width=device-width, initial-scale=1.0, text/html; charset=utf-8" />
+    <title>Oscillator</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet">
+</head>
+
+<script>
+    document.addEventListener('keydown', getKey);
+
+    const numberOfAudioSources = 10;
+    let contexts = [];
+    let current = 0;
+
+    function loadAudioSources() {
+        for (i = 0; i < numberOfAudioSources; i++) {
+            contexts.push(new AudioContext());
+        }
+    }
+
+    function getKey(e) {
+        playSound(getFrequency(e.code));
+    }
+
+    function getFrequency(key) {
+        switch (key) {
+            case "KeyA":
+                return 440.0;
+            case "KeyW":
+                return 466.2;
+            case "KeyS":
+                return 493.9;
+            case "KeyD":
+                return 523.3;
+            case "KeyR":
+                return 554.4;
+            case "KeyF":
+                return 587.3;
+            case "KeyT":
+                return 622.3;
+            case "KeyG":
+                return 659.3;
+            case "KeyH":
+                return 698.5;
+            case "KeyU":
+                return 740.0;
+            case "KeyJ":
+                return 784.0;
+            case "KeyI":
+                return 830.6;
+            case "KeyK":
+                return 880.0;
+            case "KeyO":
+                return 932.3;
+            case "KeyL":
+                return 987.8;
+            case "Semicolon":
+                return 1047;
+            case "BracketLeft":
+                return 1109;
+            case "Quote":
+                return 1175;
+        }
+    }
+
+    function playSound(fq) {
+        if (current == contexts.length - 1) {
+            current = 0;
+        } else {
+            current++;
+        }
+        context = contexts[current];
+        var o = context.createOscillator();
+        var gain = context.createGain();
+        var frequency = fq;
+        var rampDownTime = 2.4;
+        gain.gain.exponentialRampToValueAtTime(1, context.currentTime);
+        o.frequency.value = frequency;
+        o.connect(gain);
+        gain.connect(context.destination);
+        o.start(0);
+        gain.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + rampDownTime);
+        //o.stop(1.0);
+    }
+</script>
+
+<body onload="loadAudioSources()">
+    <div id="holder">
+        <p>Slå på ljud! Använd A-L för vita tangenter och raden ovanför för svarta.</p>
+        <p class="fancy">"Pianister är inte rasister, dom trycker ner både svarta och vita"
+        </p>
+
+    </div>
+</body>
+
+</html>
