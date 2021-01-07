@@ -1,5 +1,6 @@
 body {
-    background-image: url('images/bg0.jpg');
+    background-image: url('images/bg.jpg');
+    background-color: #005;
     margin: 0px;
     color: white;
 }
@@ -10,19 +11,6 @@ body {
     margin-bottom: 10px;
 }
 
-#header {
-    background-image: url('images/header.png');
-    background-size: cover;
-    z-index: 1;
-    padding: 30px;
-    font-size: 200%;
-    text-shadow:
-        rgba(0, 0, 0, 0.3) -1px 0,
-        rgba(0, 0, 0, 0.1) 0 -1px,
-        rgba(255, 255, 255, 0.3) 0 1px,
-        rgba(0, 0, 0, 0.1) -1px -2px;
-}
-
 .content {
     background-color: darkslategrey;
     padding: 30px;
@@ -30,6 +18,30 @@ body {
     text-align: center;
     margin-top: -35px;
     z-index: 3;
+}
+
+#wrapper {
+    display: flex;    
+    width: 100%;
+    flex-grow: 1;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+}
+
+#wrapper > div {
+    flex-basis: 100%;
+    background-color: white;
+    border-radius: 0, 0, 10px, 10px;
+    animation: opacitySinker 2.5s forwards;
+    height: 100%;
+}
+
+@keyframes opacitySinker {
+    100% {
+        opacity: 0%;
+        background-color: lightblue;
+    }
 }
 
 h1 {
@@ -47,6 +59,8 @@ p {
         rgba(255, 255, 255, 0.3) 0 1px,
         rgba(0, 0, 0, 0.1) -1px -2px;
     font-style: italic;
+
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 p::first-letter {
